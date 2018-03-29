@@ -1,0 +1,8 @@
+# This is the inventory file
+
+[dbservers]
+db1.bk.com
+
+[webservers]
+web1.bk.com
+
