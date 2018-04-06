@@ -10,7 +10,7 @@
   roles:
     - web
 
--hosts: db 
+- hosts: db 
   become: yes
   roles:
     - db

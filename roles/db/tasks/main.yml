@@ -1,3 +1,23 @@
 ---
 # tasks file for db
+- name: create repo for mariadb
+  yum_respository:
+    name: mariadb
+    description: MariaDB repo
+    baseurl: http://yum.mariadb.org/10.2/rhel7-amd64
+    gpgkey: https://yum.mariadb.org/RPM-GPG-KEY-MariaDB
+    gpgcheck: yes
+    enabled: yes
+
+    when:
+      - ansible_distribution == "RedHat"
+      - ansible_distribution_major_version == "7"
+- name: install MariaDB
+  yum: name={{item}} state=installed
+  with_items:
+    - MariaDB-server
+    - MariaDB-client
+
+- name: Start MariaDB service
+  service: name=mariadb state=started enabled=yes
 
