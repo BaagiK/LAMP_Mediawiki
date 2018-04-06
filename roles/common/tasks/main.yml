@@ -1,2 +1,16 @@
 ---
-# tasks file for common
+- name: Install ntp on all servers
+  yum: ntp state=present
+  tags: ntp
+
+
+- name: Configure ntp service on all servers
+  template: src=ntp.conf.j2 dest=/etc/ntp.conf
+  tags: ntp
+
+  notify: restart ntp
+
+- name: Start ntp service and enable
+  service: name=ntpd state=started enabled=yes
+  tags: ntp
+
