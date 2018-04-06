@@ -1,0 +1,19 @@
+---
+-name: install EPEL repo
+ yum: name=https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm enablerepo=yes
+
+-name: install remi repo for latest php
+ yum: name=http://rpms.remirepo.net/enterprise/remi-release-7.rpm
+
+-name: install required php packages
+ yum: name={{item}} state=installed enablerepo=remi
+  with_items:
+    php
+    php-mysqlnd
+    php-xml
+    php-mbstring
+    php-ZendFramework-Cache-Backend-Apc
+    php-gd
+    php-intl
+
+

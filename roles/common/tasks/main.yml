@@ -1,4 +1,7 @@
 ---
+- include: repos.yml
+
+
 - name: Install ntp on all servers
   yum: name=ntp state=present
 #  tags: ntp
