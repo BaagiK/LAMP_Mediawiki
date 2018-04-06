@@ -1,16 +1,16 @@
 ---
 - name: Install ntp on all servers
-  yum: ntp state=present
-  tags: ntp
+  yum: name=ntp state=present
+#  tags: ntp
 
 
 - name: Configure ntp service on all servers
   template: src=ntp.conf.j2 dest=/etc/ntp.conf
-  tags: ntp
+#  tags: ntp
 
   notify: restart ntp
 
 - name: Start ntp service and enable
   service: name=ntpd state=started enabled=yes
-  tags: ntp
+#  tags: ntp
 
